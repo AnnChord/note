@@ -22,3 +22,8 @@ git checkout -b name
 git branch -d name
 ```
 
+```bash
+#查看状态
+git status
+```
+
