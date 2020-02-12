@@ -83,23 +83,42 @@ java -jar -Dspring.profiles.active=prod/target/luckymoney-0.0.1-SNAPSHOT.jar
   3. 请求类型：GET；请求路径：/luckymoneys/id；功能：通过id查询红包
   4. 请求类型：PUT；请求路径：/luckymoneys/id；功能：通过id更新红包
 
+**项目数据库操作步骤：**
+
 ```bash
-# 配置文件配置连接数据库
+#第一步：引入依赖（pom.xml中）
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+</dependency>
+#重新导入（Maven->Reimport）
+```
+
+```bash
+# 第二步：配置文件配置连接数据库
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://118.24.124.139:33061/luckymoney
 spring.datasource.username=shu
 spring.datasource.password=0912sys
 spring.jpa.hibernate.ddl-auto=update   # create 创建数据库；update 修改数据库
-spring.jpa.show-sql=true
+spring.jpa.show-sql=true   #在控制台里显示sql语句
 ```
+
+***
 
 ```java
 /**
 建表：
-1.创建新类其类名即为表名
+1.创建新类其类名即为表名，除首字母大写外，其他小写
 2.类中定义变量即表中字段
-3.配置文件中设置“spring.jpa.hibernate.ddl-auto=create”
-4.启动项目
+3.id为自增，故加注解：@GeneratedValue，另外一个注解：@Id
+4.类外加注解：@Entity
+5.配置文件中设置“spring.jpa.hibernate.ddl-auto=create”
+6.启动项目
 */
 
 /**
