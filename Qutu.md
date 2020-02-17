@@ -77,7 +77,7 @@
 
 ### 一、维持APP用户登录状态
 
-![Image 2](D:\dev\note_picture\Image 2.png)
+![Image 2](.\picture\Image 2.png)
 
 Token运行机制：
 

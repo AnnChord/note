@@ -39,13 +39,13 @@ MODE_MULTI_PROCESS          ： 更改数据时提醒的进程
 
 2. 存放数据的方法用SharedPreferences.Editor
 
-![image-20200209231105363](C:\Users\anne\AppData\Roaming\Typora\typora-user-images\image-20200209231105363.png)
+![image-20200209231105363](.\picture\image-20200209231105363.png)
 
 **读取**
 
 ShardPreference方法：
 
-![image-20200210121716971](C:\Users\anne\AppData\Roaming\Typora\typora-user-images\image-20200210121716971.png)
+![image-20200210121716971](.\picture\image-20200210121716971.png)
 
 #### 例子
 
@@ -56,16 +56,16 @@ ShardPreference方法：
 3. 调用Editor对象的putxxx(key,value)的方法，来存放数据。
 4. 调用editor.commit()方法，提交添加或修改的内容。
 
-![1](C:\Users\anne\AppData\Roaming\Typora\typora-user-images\1.jpg)
+![1](.\picture\1.jpg)
 
-![2](C:\Users\anne\AppData\Roaming\Typora\typora-user-images\2.jpg)
+![2](.\picture\2.jpg)
 
 **共享参数取出数据的步骤：**
 
 1. 获得SharedPreference的对象，getSharedPreferences(String ,int )；
 2. 调用SharedPreference的对象中的getxxx()方法，传入相应的key值，就能获取到数据了。
 
-![3](C:\Users\anne\AppData\Roaming\Typora\typora-user-images\3.jpg)
+![3](.\picture\3.jpg)
 
 #### 总结
 
@@ -93,3 +93,81 @@ mode：生成文件的权限
 
 MODE_PRIVATE、MODE_PRIVATE、MODE_WORLD_WRITEABLE、MODE_MULTI_PROCESS（如**用法**所示）
 
+## 二、ActionBar的使用方法
+
+* ActionBar：使用活动条
+
+* Android3.0的重要更新。主要显示再屏幕的顶端，一般用于显示图标和应用名。
+
+* 功能：
+
+  1. 可以显示选项菜单的菜单项。把menu item转化为action item：在布局文件中的item控件中添加android:showAsAction="always|withText"
+
+     此操作可将选项菜单固定放到actionbar之上
+
+  2. 使用应用程序的图标可以进行相关操作
+
+  3. 提供了交互式的view，作为action view
+
+  4. 提供了tab导航方式，可以随意切换多个fragment。
+
+  5. 提供了下拉列表的方式
+
+  6. ActionProvider的使用，在actionbar上加入了popuwindow
+
+```java
+/*功能一：选项菜单菜单项显示在ActionBar上。
+actionbar上显示选项菜单的菜单项，通过调用menuitem的setShowAsAction的方法
+showAsAction属性包含的参数：
+SHOW_AS_ACTION_ALWAYS：menuitem总是在actionbar上显示。
+SHOW_AS_ACTION_IF_ROOM：当actionbar的位置足够时，才显示menuitem
+SHOW_AS_ACTION_NEVER：不将该menuitem显示在actionbar上。
+SHOW_AS_ACTION_WITH_TEXT：将menuitem显示在菜单项上，并显示该菜单的文本内容。
+*/
+
+/*功能二：关于应用程序图标的使用*/
+setDisplayHomeAsUpEnabled(boolean showHomeAsUp);    //设置应用程序的图标变成可点击的图标，并且在图标的左边加入一个箭头
+
+setDisplayOptions(int options);      //通过传递的int类型，来确定actionbar显示选项。
+
+setDisplayShowHomeEnabled(boolean showHome);     //设置是否要显示应用程序的图标
+
+setHomeButtonEnabled(boolean enabled);     //将应用程序的图标转变为可点击的按钮
+
+/*❤❤*/
+SearchView    //搜索框控件
+setIconifiedByDefault(boolean)；    //设置搜索框是否自动缩小为图标
+setQueryHint(CharSequence);      //设置搜索框内默认显示的提示文本
+setSubmitButtonEnabled(true);   //设置是否显示提交的按钮
+SearchView.OnQueryTextListener;   //监听搜索框内容的事件监听器
+
+/*ListView的过滤器：*/
+lv.setTextFilterEnabled(true);  //设置ListView是否具有过滤的功能
+lv.clearTextFilter();     //清除过滤
+lv.setFilterText(newText);    //对指定的内容进行过滤
+
+/*RatingBar：通过星星来表示进度
+android:inIndicator:
+android:numStars    设置星级评分有几颗星
+android:rating      设置星级评分默认的星级
+android:stepSize    设置每次最少改变多少星级
+
+RatingBar.OnRatingBarChangeListener    监听器，当星级评分发生改变时，就调用其方法。
+*/
+
+/*功能三：*/
+```
+
+
+
+* 如何去获取actionbar的实例：
+
+  getActionBar();
+
+* 去除actionbar的方法：
+  1. requestWindowFeature(getWindow().FEATURE_NO_TITLE);   //去除标题栏
+  2. 在清单文件中的，添加android:theme="@android:style/Theme.Holo.NoActionBar"或者是android:theme="@android:style/Theme.Light.NoTitleBar"
+
+* actionbar的显示和隐藏：
+
+  通过调用action.hide()和actionbar.show()方法来实现。
