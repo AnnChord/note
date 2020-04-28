@@ -69,7 +69,7 @@ java -jar -Dspring.profiles.active=prod/target/luckymoney-0.0.1-SNAPSHOT.jar
     public String say(@RequestParam(value = "id",required = false,defaultValue="0") Integer id){
         return "id:" + id;
 }
-# 建议在body中传参数
+# 建议在body中传参数（POST专门请求）
 ```
 
 ***

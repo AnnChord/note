@@ -155,10 +155,51 @@ android:stepSize    设置每次最少改变多少星级
 RatingBar.OnRatingBarChangeListener    监听器，当星级评分发生改变时，就调用其方法。
 */
 
-/*功能三：*/
+/*功能三：可提供view也可提供布局
+ActionBar上除了可以显示普通的action item之外，还可以显示普通的ui组件。
+在ActionBar上添加action view，有两种方式：
+1. 定义action item，用android:actionViewClass属性指定action view的实现类。*/
+```
+
+![image-20200218161815703](./picture/image4.png)
+
+```java
+/*2. 定义action item，用android:actionLayout属性指定action view对应视图资源。
+*/
+```
+
+![image-20200218162011379](./picture/image5.png)
+
+```java
+/*功能四：提供tab导航
+1. 调用ActionBar的 getNavigationMode(int mode)，设置actionbar使用标签导航形式。
+2. 调用ActionBar的addTab()的方法，添加多个tab标签
+mode包含的几种形式：
+NAVIGATION_MODE_STANDARD    ：标准的，默认的
+NAVIGATION_MODE_LIST        ：下拉列表形式
+NAVIGATION_MODE_TABS        ：tab标签导航栏
+*/
+```
+
+![image-20200218163101628](./picture/image 6.png)
+
+![image-20200218163421238](./picture/image7.png)
+
+```java
+/*功能五：提供了下拉列表的方式
+
+*/
 ```
 
 
+
+
+
+* ActionBar的作用
+
+  1. 提供服用户当前位置的指示：actionbar中的标题以及图标
+  2. 提供用于操作Activity的重要动作：action
+  3. 提供不同的导航：tabs   drop-drown    lists
 
 * 如何去获取actionbar的实例：
 
@@ -170,4 +211,4 @@ RatingBar.OnRatingBarChangeListener    监听器，当星级评分发生改变�
 
 * actionbar的显示和隐藏：
 
-  通过调用action.hide()和actionbar.show()方法来实现。
+  通过调用actionbar.hide()和actionbar.show()方法来实现。

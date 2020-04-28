@@ -15,5 +15,21 @@
 
 
 
-## 视频4：
+## 视频4：ViewPager的应用
+
+* 布局：
+
+  1、ImageView：scaleType=“centerCrop”    等比例放大
+
+**自动无限播放页面：**
+
+1. 无限：更改Adapter里的配置
+2. 自动：在Activity里加入handller计时器
+
+## 语法缩写
+
+```java
+fori       //打出for循环
+创建适配器new Adapter（）.field;     //定义适配器     
+```
 

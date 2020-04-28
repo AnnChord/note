@@ -20,10 +20,17 @@ git checkout dev | master
 git checkout -b name
 # 删除分支
 git branch -d name
+# 合并分支（在当前分支下合并目标分支）
+git merge <branch>
 ```
 
 ```bash
-#查看状态
+# 查看状态
 git status
+```
+
+```bash
+# 有冲突合并
+:wq
 ```
 
